@@ -1,0 +1,377 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Thinking Grid</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.grid-container {
+    max-width: 1200px;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0; /* Removed gutters */
+}
+
+/* Group styling */
+.group {
+    padding: 0;
+    display: grid;
+    grid-gap: 0; /* Removed gutters */
+}
+
+.group:first-of-type {
+    grid-column: span 2; /* Make the first group take the whole first row */
+    grid-template-columns: repeat(4, 1fr); /* First group is a 4 column grid */
+    background-color: rgba(166, 66, 58, 0.1); /* Dark red shading with reduced opacity */
+}
+
+.group:nth-of-type(2) {
+    grid-template-columns: repeat(3, 1fr); /* Second group is a 3 column grid */
+    background-color: rgba(0, 109, 170, 0.1); /* Blue shading with reduced opacity */
+}
+
+.group:nth-of-type(3) {
+    grid-template-columns: repeat(2, 1fr); /* Third group is a 2 column grid */
+    background-color: rgba(34, 139, 34, 0.1); /* Green shading with reduced opacity */
+}
+
+.group:nth-of-type(4) {
+    grid-template-columns: repeat(2, 1fr); /* Fourth group is a 2 column grid */
+    background-color: rgba(212, 160, 23, 0.1); /* Golden yellow shading with reduced opacity */
+}
+
+.group:nth-of-type(5) {
+    grid-template-columns: repeat(3, 1fr); /* Fifth group is a 3 column grid */
+    background-color: rgba(0, 128, 128, 0.1); /* Teal shading with reduced opacity */
+}
+
+.group h2 {
+    text-align: center;
+    font-size: 18px;
+    width: 100%;
+    margin-bottom: 0;
+    grid-column: span 3; /* Make the header span all 3 columns */
+}
+
+.group:first-of-type h2 {
+    grid-column: span 4; /* Make the header span all 4 columns in the first group */
+}
+
+.group:nth-of-type(3) h2,
+.group:nth-of-type(4) h2 {
+    grid-column: span 2; /* Make the header span all 2 columns in the third and fourth groups */
+}
+
+.grid-item {
+    text-align: center;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; /* Added padding to grid items */
+}
+
+.grid-item img {
+    max-width: 100px; /* Limit image width */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.grid-item p {
+    margin-top: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Remove default button styling */
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .group {
+        grid-template-columns: 1fr; /* Make each subgroup a single column grid on small screens */
+    }
+
+    .grid-item img {
+        max-width: 80px;
+    }
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Changed to white with slight opacity */
+    color: black; /* Changed text color to black */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    text-align: center;
+    padding: 20px;
+}
+
+.overlay img {
+    max-width: 100px; /* Limit image width in overlay */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.group {
+    position: relative;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <!-- Group 1: Philosophical Underpinnings of Science -->
+        <div class="group">
+            <div class="grid-item">
+                <h2>Philosophical Underpinnings of Science</h2>
+            </div>
+            <div class="grid-item" data-description="Science advances on the assumption that there is a reality out there that will keep doing its thing independently of what we want it to do, and we can learn about this reality bit by bit.">
+                <button aria-label="Shared Reality">
+                    <img src="icons/sharedreality.svg" alt="Shared Reality">
+                    <p class="item-title">Shared Reality</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="Most students trust their direct senses as a usually reliable way to learn about reality, but don’t know when to trust more indirect observation (e.g. through instruments, understood broadly). We teach how and when they can use scientific instruments to extend their observations of reality and how to evaluate the validity of these instruments, e.g. through interactive exploration.">
+                <button aria-label="Senses & Instrumentation">
+                    <img src="icons/sensesinstrumentation.svg" alt="Senses & Instrumentation">
+                    <p class="item-title">Senses & Instrumentation</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="Any one type of observation, measurement, or evidence is rarely conclusive. The more independent lines of relevant, accurate, and reliable evidence supporting a given claim, the more confidence in it is justified. This includes claims about causation, measurement, and the validity of instruments.">
+                <button aria-label="Multiple Lines of Evidence">
+                    <img src="icons/multiplelinesofevidence.svg" alt="Multiple Lines of Evidence">
+                    <p class="item-title">Multiple Lines of Evidence</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="Randomized Controlled Trials (RCTs) are a tool for isolating variables to test whether a given variable X causes another variable Y. The power of RCTs for causal inference relies on randomized assignment to experimental and control conditions. Students need to be able to use these features to evaluate and design studies.">
+                <button aria-label="Randomized Controlled Trials">
+                    <img src="icons/randomizedcontrolledtrials.svg" alt="Randomized Controlled Trials">
+                    <p class="item-title">Randomized Controlled Trials</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="Causal connections are often inferred from observed associations between variables, which we call correlations. However, correlations can also arise spuriously from random noise, and, even if genuine, can arise via multiple causal stories (X causes Y, Y causes X, or a third variable causes both). These possibilities can be disentangled using other forms of evidence and analysis (see below).">
+                <button aria-label="Correlation">
+                    <img src="icons/correlation.svg" alt="Correlation">
+                    <p class="item-title">Correlation</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="Students need to be able to develop causal explanations for events and phenomena. Understanding causal relationships is essential for determining what actions will bring about what outcomes, and therefore for deliberate action. Science has therefore put much of its effort into investigating the causal structure of the shared reality (what causes what). Students also need to understand that causation can be complex, with multiple factors in play.">
+                <button aria-label="Causal Reasoning">
+                    <img src="icons/causalreasoning.svg" alt="Causal Reasoning">
+                    <p class="item-title">Causal Reasoning</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="Since RCTs are often impossible or unavailable, students need to be able to identify partial evidence for causation, such as dose-response curve and consistency across contexts, evaluating the quality of each piece of evidence and how strongly, taken together, they support a causal claim.">
+                <button aria-label="Hill Criteria">
+                    <img src="icons/hillscriteria.svg" alt="Hill Criteria">
+                    <p class="item-title">Hill Criteria</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- Group 2: Probabilistic Reasoning -->
+        <div class="group">
+            <div class="grid-item">
+                <h2>Probabilistic Reasoning</h2>
+            </div>
+            <div class="grid-item" data-description="Quantified estimates of confidence are a key tool of science to hold various claims about the world at various confidence levels. It allows one to think flexibly with uncertainty (+ use partial information that you don’t know true or false) and to allow room for changing one’s mind. It shifts focus from “am I right?” to “how sure?” Students need to be able to estimate how likely claims are to be accurate in order to take uncertainty into account in decisions. Uncertainty often cannot be reduced to certainty before a decision must be made.">
+                <button aria-label="Probabilistic Thinking">
+                    <img src="icons/probabilisticthinking.svg" alt="Probabilistic Thinking">
+                    <p class="item-title">Probabilistic Thinking</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="For any meaningful pattern we are seeking (signal), there are always other random factors (noise) that can obscure or masquerade as the signal. Students need to recognize the difficulty of identifying signal amidst noise, while remaining optimistic that techniques such as filters and statistical analysis can help reduce noise and quantify the strength of the signal.">
+                <button aria-label="Signal & Noise">
+                    <img src="icons/signalnoise.svg" alt="Signal & Noise">
+                    <p class="item-title">Signal & Noise</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="Humans have the natural tendency to see patterns, even when they arise from random chance. Students need to use caution when attributing causal significance to apparent patterns, using statistical considerations to calibrate confidence that a given pattern is meaningful.">
+                <button aria-label="Seeing Patterns in Random Noise">
+                    <img src="icons/seeingpatternsinrandomnoise.svg" alt="Seeing Patterns in Random Noise">
+                    <p class="item-title">Seeing Patterns in Random Noise</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="Students often need to make decisions under conditions of uncertainty. In these circumstances, it is almost always necessary to consider trading off the risk of a false positive vs. that of a false negative error, necessitating a value judgment about their relative costs.">
+                <button aria-label="False Positives & Negatives">
+                    <img src="icons/falsepositivesfalsenegatives.svg" alt="False Positives & Negatives">
+                    <p class="item-title">False Positives & Negatives</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="Systematic uncertainty arises when measurements are biased towards one side of the true value, through flaws in instrumentation or design. It can be reduced by recourse to multiple lines of evidence (mentioned in Underpinnings). Statistical uncertainty arises when errors in measurement are distributed equally as often on either side of the true value, and can be reduced by increasing sample size.">
+                <button aria-label="Systematic Uncertainty">
+                    <img src="icons/systematicstatisticaluncertainty.svg" alt="Systematic Uncertainty">
+                    <p class="item-title">Systematic Uncertainty</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="It is often necessary to make decisions for the future without knowing what that future will be like. Scenario planning is a strategy for decision-making that systematically takes into account multiple possible futures, by considering how two important and uncertain situational factors might play out.">
+                <button aria-label="Scenario Planning">
+                    <img src="icons/scenarioplanning.svg" alt="Scenario Planning">
+                    <p class="item-title">Scenario Planning</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- Group 3: Can-Do Attitude -->
+        <div class="group">
+            <div class="grid-item">
+                <h2>Can-Do Attitude</h2>
+            </div>
+            <div class="grid-item" data-description="In order to persist in their attempts to understand and solve problems, students need scientific optimism, the belief that persistence and iteration will eventually pay off with insights and progress. Balance between not staying on a problem long enough and sticking to a problem that’s not ready to be solved. Science has developed cultural attitudes that encourage persisting on a problem long enough to solve it, which we call “scientific optimism.”">
+                <button aria-label="Scientific Optimism">
+                    <img src="icons/scientificoptimism.svg" alt="Scientific Optimism">
+                    <p class="item-title">Scientific Optimism</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="Scientific advancement is most often achieved through iterative improvement of tools, knowledge base, and interpretations, rather than giant leaps. … foster patience and persistence.">
+                <button aria-label="Scientific Advancement">
+                    <img src="icons/scientificadvancement.svg" alt="Scientific Advancement">
+                    <p class="item-title">Scientific Advancement</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="A rough understanding that captures the most significant features of a system or phenomenon has great utility, and is often sufficient. Students need to be able to identify the most significant features, causes, etc. of a system, especially in situations with many causes of widely varying effect sizes.">
+                <button aria-label="Orders of Understanding">
+                    <img src="icons/ordersofunderstanding.svg" alt="Orders of Understanding">
+                    <p class="item-title">Orders of Understanding</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="It is often useful to calculate rough estimates to the nearest order of magnitude, to develop a feel for large quantities, to check the plausibility of surprising or important numbers, and to inform plans and decisions when detailed calculations are impractical.">
+                <button aria-label="Firm Estimations">
+                    <img src="icons/fermiestimations.svg" alt="Firm Estimations">
+                    <p class="item-title">Firm Estimations</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- Group 4: Metacognition -->
+        <div class="group">
+            <div class="grid-item">
+                <h2>Metacognition</h2>
+            </div>
+            <div class="grid-item" data-description="Confirmation bias makes people slow to reconsider or change their ideas, even when there are strong reasons to do so. Students need to learn to recognize this temptation and counter it using Actively Open Thinking.">
+                <button aria-label="Confirmation Bias">
+                    <img src="icons/confirmationbias.svg" alt="Confirmation Bias">
+                    <p class="item-title">Confirmation Bias</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="Human cognition is vulnerable to error because of processing limitations and motivational biases. Students can learn to avoid these traps by using systematic strategies of logical and statistical thinking.">
+                <button aria-label="Heuristics & Biases">
+                    <img src="icons/heuristicsbiases.svg" alt="Heuristics & Biases">
+                    <p class="item-title">Heuristics & Biases</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="Students need to be able to differentiate reliable from unreliable information. Among other strategies, lateral reading across multiple sources is an effective way to evaluate claims, by checking the expertise and potential biases of sources, consensus among credible sources, and potential misinformation or missing context.">
+                <button aria-label="Credible Sources">
+                    <img src="icons/crediblesources.svg" alt="Credible Sources">
+                    <p class="item-title">Credible Sources</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="Conspiracy theories can be attractive by offering simple explanations for confusing and frustrating phenomena. Because it leads to skepticism of countering sources, conspiracy thinking is self-reinforcing, unfalsifiable, and isolating. Students need to immunize themselves with strategies for avoiding this trap, combining many of the other concepts in this list such as probabilistic and actively open thinking.">
+                <button aria-label="Conspiracy Theories">
+                    <img src="icons/conspiracytheories.svg" alt="Conspiracy Theories">
+                    <p class="item-title">Conspiracy Theories</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- Group 5: Decision-Making -->
+        <div class="group">
+            <div class="grid-item">
+                <h2>Decision-Making</h2>
+            </div>
+            <div class="grid-item" data-description="Most students have experienced and observed how difficult it can be to make a decision well in a group or community. There are many strategies to improve such decision-making, such as deferring judgments of fact to relevant experts, surveying the priorities of those who will be affected by the decision, and providing opportunities for people who disagree to discuss the key arguments on both sides.">
+                <button aria-label="Group Decision-Making">
+                    <img src="icons/groupdecisionmaking.svg" alt="Group Decision-Making">
+                    <p class="item-title">Group Decision-Making</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="When making decisions, it is important to distinguish between facts, which are best established by reference to evidence and experts, and values, which may come into conflict both within and between individuals affected by the decision. A good decision uses the available facts to predict the outcomes of each option, and the most desirable option is chosen through consideration of trade-offs and prioritization of values.">
+                <button aria-label="Weaving Facts & Values in Decision-Making">
+                    <img src="icons/weavingfactsvalues.svg" alt="Weaving Facts & Values in Decision-Making">
+                    <p class="Weaving Facts & Values in Decision-Making">Weaving Facts & Values in Decision-Making</p>
+                </button>
+            </div>
+            <div class="grid-item" data-description="Students need to recognize the conditions that make group judgments better or worse. In herd thinking, shared assumptions and pressure to conform or follow authority can exacerbate biases; in wisdom of crowds, independent judgments and contrasting assumptions can help cancel out biases and lead to judgments better than those by any individual member.">
+                <button aria-label="Wisdom of Crowds vs Herd Thinking">
+                    <img src="icons/wisdomofcrowdsvsherdthinking.svg" alt="Wisdom of Crowds vs Herd Thinking">
+                    <p class="Wisdom of Crowds vs Herd Thinking">Wisdom of Crowds vs Herd Thinking</p>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const gridItems = document.querySelectorAll('.grid-item');
+    
+            gridItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    // Find parent group
+                    const parentGroup = this.closest('.group');
+    
+                    // Create overlay element if it doesn't exist
+                    let overlay = parentGroup.querySelector('.overlay');
+                    if (!overlay) {
+                        overlay = document.createElement('div');
+                        overlay.classList.add('overlay');
+                        parentGroup.appendChild(overlay);
+                    }
+    
+                    // Set the description text, item title, and icon in the overlay
+                    const itemTitle = this.querySelector('.item-title').textContent;
+                    const itemIcon = this.querySelector('img').outerHTML;
+                    overlay.innerHTML = `<h3>${itemTitle}</h3>${itemIcon}<p>${this.dataset.description}</p>`;
+    
+                    // Toggle the visibility of the overlay
+                    if (overlay.style.display === 'block') {
+                        overlay.style.display = 'none';
+                    } else {
+                        overlay.style.display = 'block';
+                    }
+    
+                    // Hide the overlay when clicked
+                    overlay.addEventListener('click', function () {
+                        overlay.style.display = 'none';
+                    });
+                });
+            });
+        });
+    </script>
+            });
+        });
+    </script>
+</html>

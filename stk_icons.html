@@ -29,32 +29,31 @@ body {
     padding: 0;
     display: grid;
     grid-gap: 0; /* Removed gutters */
+    border-bottom: 1px solid #5b5b5b; 
+    border-right: 1px solid #5b5b5b; 
+    margin:5px 10px;
 }
 
 .group:first-of-type {
     grid-column: span 2; /* Make the first group take the whole first row */
     grid-template-columns: repeat(4, 1fr); /* First group is a 4 column grid */
-    background-color: rgba(166, 66, 58, 0.1); /* Dark red shading with reduced opacity */
+    border-right:none;
 }
 
 .group:nth-of-type(2) {
-    grid-template-columns: repeat(3, 1fr); /* Second group is a 3 column grid */
-    background-color: rgba(0, 109, 170, 0.1); /* Blue shading with reduced opacity */
+    grid-template-columns: repeat(4, 1fr); /* Second group is a 3 column grid */
 }
 
 .group:nth-of-type(3) {
-    grid-template-columns: repeat(2, 1fr); /* Third group is a 2 column grid */
-    background-color: rgba(34, 139, 34, 0.1); /* Green shading with reduced opacity */
+    grid-template-columns: repeat(3, 1fr); /* Third group is a 2 column grid */
 }
 
 .group:nth-of-type(4) {
-    grid-template-columns: repeat(2, 1fr); /* Fourth group is a 2 column grid */
-    background-color: rgba(212, 160, 23, 0.1); /* Golden yellow shading with reduced opacity */
+    grid-template-columns: repeat(3, 1fr); /* Fourth group is a 2 column grid */
 }
 
 .group:nth-of-type(5) {
     grid-template-columns: repeat(3, 1fr); /* Fifth group is a 3 column grid */
-    background-color: rgba(0, 128, 128, 0.1); /* Teal shading with reduced opacity */
 }
 
 .group h2 {
@@ -81,7 +80,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10px; /* Added padding to grid items */
+    padding: 4px;
+    margin: 0;
 }
 
 .grid-item img {
@@ -89,6 +89,8 @@ body {
     height: auto;
     display: block;
     margin: 0 auto;
+    padding:0px;
+
 }
 
 .grid-item p {
@@ -125,9 +127,9 @@ button {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 90%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* Changed to white with slight opacity */
+    background-color: rgba(255, 255, 255, 0.939); /* Changed to white with slight opacity */
     color: black; /* Changed text color to black */
     display: none;
     align-items: center;
@@ -135,6 +137,11 @@ button {
     z-index: 1000;
     text-align: center;
     padding: 20px;
+    overflow: hidden;
+}
+.overlay p {
+    max-width: 90%; /* Limit image width in overlay */
+
 }
 
 .overlay img {
@@ -144,9 +151,23 @@ button {
     margin: 0 auto;
 }
 
+.overlay .close-btn {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    background-color: #333;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    height:30px;
+    width:30px;
+}
+
 .group {
     position: relative;
-
 }
 
     </style>
@@ -352,7 +373,7 @@ button {
                     // Set the description text, item title, and icon in the overlay
                     const itemTitle = this.querySelector('.item-title').textContent;
                     const itemIcon = this.querySelector('img').outerHTML;
-                    overlay.innerHTML = `<h3>${itemTitle}</h3>${itemIcon}<p>${this.dataset.description}</p>`;
+                    overlay.innerHTML = `<button class="close-btn">X</button><h3>${itemTitle}</h3>${itemIcon}<p>${this.dataset.description}</p>`;
     
                     // Toggle the visibility of the overlay
                     if (overlay.style.display === 'block') {
@@ -361,15 +382,13 @@ button {
                         overlay.style.display = 'block';
                     }
     
-                    // Hide the overlay when clicked
-                    overlay.addEventListener('click', function () {
+                    // Hide the overlay when the close button is clicked
+                    overlay.querySelector('.close-btn').addEventListener('click', function (e) {
                         overlay.style.display = 'none';
+                        e.stopPropagation(); // Prevent the overlay click event from firing
                     });
                 });
             });
         });
     </script>
-
-
-
 </html>

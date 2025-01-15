@@ -195,41 +195,50 @@
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const gridItems = document.querySelectorAll('.grid-item');
-    
-            gridItems.forEach(item => {
-                item.addEventListener('click', function () {
-                    // Find parent group
-                    const parentGroup = this.closest('.group');
-    
-                    // Create overlay element if it doesn't exist
-                    let overlay = parentGroup.querySelector('.overlay');
-                    if (!overlay) {
-                        overlay = document.createElement('div');
-                        overlay.classList.add('overlay');
-                        parentGroup.appendChild(overlay);
-                    }
-    
-                    // Set the description text, item title, and icon in the overlay
-                    const itemTitle = this.querySelector('.item-title').textContent;
-                    const itemIcon = this.querySelector('img').outerHTML;
-                    overlay.innerHTML = `<button class="close-btn">X</button><h3>${itemTitle}</h3>${itemIcon}<p>${this.dataset.description}</p>`;
-    
-                    // Toggle the visibility of the overlay
-                    if (overlay.style.display === 'block') {
-                        overlay.style.display = 'none';
-                    } else {
-                        overlay.style.display = 'block';
-                    }
-    
-                    // Hide the overlay when the close button is clicked
-                    overlay.querySelector('.close-btn').addEventListener('click', function (e) {
-                        overlay.style.display = 'none';
-                        e.stopPropagation(); // Prevent the overlay click event from firing
-                    });
-                });
-            });
-        });
+      document.addEventListener('DOMContentLoaded', function () {
+          const gridItems = document.querySelectorAll('.grid-item');
+	  
+          gridItems.forEach(item => {
+              item.addEventListener('click', function () {
+                  // Find parent group
+                  const parentGroup = this.closest('.group');
+		  
+                  // Create overlay element if it doesn't exist
+                  let overlay = parentGroup.querySelector('.overlay');
+                  if (!overlay) {
+                      overlay = document.createElement('div');
+                      overlay.classList.add('overlay');
+                      parentGroup.appendChild(overlay);
+                  }
+		  
+                  // Set the description text, item title, and icon in the overlay
+                  const itemTitle = this.querySelector('.item-title').textContent;
+                  const itemIcon = this.querySelector('img').outerHTML;
+                  overlay.innerHTML = `<button class="close-btn">X</button><h3>${itemTitle}</h3>${itemIcon}<p>${this.dataset.description}</p>`;
+		  
+                  // Toggle the visibility of the overlay
+                  if (overlay.style.display === 'block') {
+                      overlay.style.display = 'none';
+                  } else {
+                      overlay.style.display = 'block';
+                  }
+		  document.addEventListener('click', function(e) {
+		      // Check if click is outside grid-container
+		      if (!e.target.closest('.grid-container')) {
+			  // Find and close any open overlays
+			  const overlays = document.querySelectorAll('.overlay');
+			  overlays.forEach(overlay => {
+			      overlay.style.display = 'none';
+			  });
+		      }
+		  });
+                  // Hide the overlay when the close button is clicked
+                  overlay.querySelector('.close-btn').addEventListener('click', function (e) {
+                      overlay.style.display = 'none';
+                      e.stopPropagation(); // Prevent the overlay click event from firing
+                  });
+              });
+          });
+      });
     </script>
 </html>
